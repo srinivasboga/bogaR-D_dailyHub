@@ -1,0 +1,19 @@
+runtime: java17
+instance_class: F1
+
+env: standard
+
+entrypoint: java -jar target/teleport.jar  # Replace with your actual JAR filename
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 2
+
+service_account: teleport
+
+env_variables:
+  PORT: 8080
+
+handlers:
+  - url: /.*
+    script: auto
